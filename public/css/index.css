@@ -1,0 +1,22 @@
+* {
+    /* margin: 0;
+    padding: 0; */
+    box-sizing: border-box;
+}
+
+th, th button {
+    font-size: 18px;
+}
+
+body {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+tr {
+    /* color: red; */
+    text-wrap: wrap;
+    /* width: 200px; */
+}
