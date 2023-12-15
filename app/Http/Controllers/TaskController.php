@@ -33,19 +33,21 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Task $task)
+    public function store()
     {
+        Task::create(request()->only(['title', 'description']));
+
         $rules = [
             'name' => 'required',
             'description' => 'required'
         ];
 
-        $task->title = $request->input('name');
-        $task->description = $request->input('description');
-        $task->completed = 'Не выполнено';
-        $task->created_at = now();
+        // $task->title = $request->input('title');
+        // $task->description = $request->input('description');
+        // $task->completed = 'Не выполнено';
+        // $task->created_at = now();
 
-        $task->save();
+        // $task->save();
 
         return redirect()->route('tasks.index')->with('status', 'Blog Post Form Data Has Been inserted');
     }

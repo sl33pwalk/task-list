@@ -4,7 +4,8 @@
     box-sizing: border-box;
 }
 
-th, th button {
+th,
+th button {
     font-size: 18px;
 }
 

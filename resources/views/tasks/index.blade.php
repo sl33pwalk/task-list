@@ -46,7 +46,7 @@
                             {{ $task->title }}
                         </td>
                         <td class="px-6 py-4 description">{{ $task->description }}</td>
-                        <td class="px-6 py-4">{{ $task->completed }}</td>
+                        <td class="px-6 py-4 {{ $task->completed === 'Выполнено' ? 'bg-green-500 text-white' : 'bg-red-500 text-white' }}">{{ $task->completed }}</td>
                         <td class="px-6 py-4">{{ $task->created_at }}</td>
                         <td> <a class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900" href="{{ route('tasks.edit', $task->id) }}">Edit</a></td>
                     </tr>
