@@ -9,6 +9,15 @@ use Symfony\Component\Console\Input\Input;
 
 class TaskController extends Controller
 {
+
+    public function __construct()
+    {
+        // На будущее
+        // $this->middleware('auth');
+        // $this->middleware('admin-auth')->only('editUsers');
+        // $this->middleware('team-member')->except('editUsers');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -53,6 +62,7 @@ class TaskController extends Controller
     }
 
     /**
+     *
      * Display the specified resource.
      */
     public function show(string $id)
@@ -62,18 +72,17 @@ class TaskController extends Controller
 
     public function edit($id)
     {
-        $task = Task::find($id);
-
-        dd($task);
-        exit();
-
+        $task = Task::findOrFail($id);
         return view('tasks.edit', compact('task'));
     }
 
-    public function update(Request $request, Task $task)
+    public function update(Request $request, $id)
     {
+        $task = Task::findOrFail($id);
 
-        return redirect()->route('tasks.index');
+        $task->update($request->only('title', 'description', 'completed'));
+
+        return redirect()->route('tasks.index')->with('status', 'Успешно изменено!');
     }
 
     public function destroy(Task $task)
