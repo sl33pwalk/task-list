@@ -31,8 +31,8 @@
                         <th scope="col" class="px-6 py-3">
                             Описание
                         </th>
-                        <th scope="col" class="px-6 py-3">
-                            <button class="sort-by-status">Статус</button>
+                        <th scope="col" class="px-6 py-3" data-column="completed" data-direction="asc">
+                            <a href="" class="sort-by-column">Статус</a>
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <button class="sort-by-date">Дата создания</button>
@@ -43,13 +43,23 @@
                     @foreach ($tasks as $task)
                     <tr class=bg-white border-b dark:bg-gray-800 dark:border-gray-700>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $task->title }}
+                            <a href="{{ route('tasks.show', ['task' => $task->id]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ $task->title }}</a>
                         </td>
-                        <td class="px-6 py-4 description">{{ $task->description }}</td>
-                        <td class="px-6 py-4 {{ $task->completed === 'Выполнено' ? 'text-green-500' : 'text-red-500' }}">{{ $task->completed }}</td>
-                        <td class="px-6 py-4">{{ $task->created_at }}</td>
-                        <td> <a class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900" href="{{ route('tasks.edit', $task->id) }}">Изменить</a></td>
-                        <!-- <td><a href="{{ route('tasks.destroy', $task->id) }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Удалить</a></td> -->
+                        <td class="px-6 py-4 description">
+                            {{ $task->description }}
+                        </td>
+                        <td class="px-6 py-4 {{ $task->completed === 'Выполнено' ? 'text-green-500' : 'text-red-500' }}">
+                            {{ $task->completed }}
+                        </td>
+
+                        <td class="px-6 py-4">
+                            {{ $task->created_at }}
+                        </td>
+                        <td>
+                            <a class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900" href="{{ route('tasks.edit', $task->id) }}">
+                                Изменить
+                            </a>
+                        </td>
                         <td>
                             {{ Form::open(['route' => ['tasks.destroy', $task->id], 'method' => 'delete']) }}
                             <button type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Удалить</button>

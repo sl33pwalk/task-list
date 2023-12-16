@@ -58,16 +58,16 @@ class TaskController extends Controller
 
         // $task->save();
 
-        return redirect()->route('tasks.index')->with('status', 'Blog Post Form Data Has Been inserted');
+        return redirect()->route('tasks.index')->with('status', 'Новая задача успешно создана!');
     }
 
     /**
      *
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Task $task)
     {
-        //
+        return view('tasks.show', compact('task'));
     }
 
     public function edit($id)
