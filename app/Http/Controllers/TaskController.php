@@ -82,6 +82,11 @@ class TaskController extends Controller
     {
         $task = Task::findOrFail($id);
 
+        $validated = $request->validate([
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
         $task->update($request->only('title', 'description', 'completed'));
 
         return redirect()->route('tasks.index')->with('status', 'Успешно изменено!');
