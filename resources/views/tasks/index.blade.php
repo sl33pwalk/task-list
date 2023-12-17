@@ -22,6 +22,9 @@
         @endif
 
         <div class="relative overflow-x-auto">
+
+            <a href="{{ url('tasks/create') }}" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Создать
+                новую задачу</a>
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -53,7 +56,7 @@
                         </td>
 
                         <td class="px-6 py-4">
-                            {{ $task->created_at }}
+                            {{ Carbon\Carbon::parse($task->created_at)->format('d/m/y H:i:s') }}
                         </td>
                         <td>
                             <a class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900" href="{{ route('tasks.edit', $task->id) }}">
@@ -70,8 +73,6 @@
                 </tbody>
             </table>
         </div>
-        <a href="{{ url('tasks/create') }}" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Создать
-            новый</a>
 </body>
 
 </html>

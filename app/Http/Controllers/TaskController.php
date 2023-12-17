@@ -42,14 +42,16 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store()
+    public function store(Request $request)
     {
-        Task::create(request()->only(['title', 'description']));
+        // Task::create(request()->only(['title', 'description']));
 
-        $rules = [
-            'name' => 'required',
+        $validated = $request->validate([
+            'title' => 'required',
             'description' => 'required'
-        ];
+        ]);
+        //
+        Task::create($validated);
 
         // $task->title = $request->input('title');
         // $task->description = $request->input('description');

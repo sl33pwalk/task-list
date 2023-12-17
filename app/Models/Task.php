@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'title',
         'description',
@@ -15,8 +16,8 @@ class Task extends Model
     ];
 
     protected $casts = [
-        'created_at' => 'timestamp',
-        'updated_at' => 'timestamp'
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
     ];
 
     protected $dates = [

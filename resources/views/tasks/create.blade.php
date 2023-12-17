@@ -27,6 +27,17 @@
         <button onclick="location.href='/'" type="button" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" type="submit">Назад</button>
 
         <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" type="submit">Добавить задачу</button>
+
+    </form>
+    @if ($errors->any())
+    <div class="alert alert-danger max-w-sm mx-auto">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 </body>
 
 </html>
