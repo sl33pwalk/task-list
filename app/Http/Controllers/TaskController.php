@@ -26,7 +26,7 @@ class TaskController extends Controller
 
         // $tasks = Task::all() если бы все записи нужно было взять
         // и так же with при retrun юзать
-        $tasks = DB::table('tasks')->select('id', 'title', 'description', 'completed', 'created_at')->get();
+        $tasks = DB::table('tasks')->select('id', 'title', 'description', 'completed', 'created_at')->paginate(5);
 
         return view('tasks.index')->with(['tasks' => $tasks]);
     }
